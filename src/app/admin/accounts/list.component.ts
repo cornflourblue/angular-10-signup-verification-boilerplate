@@ -6,7 +6,7 @@ import { Account } from '@app/_models';
 
 @Component({ templateUrl: 'list.component.html' })
 export class ListComponent implements OnInit {
-    accounts: Account[];
+    accounts: any[];
 
     constructor(private accountService: AccountService) {}
 
@@ -18,7 +18,7 @@ export class ListComponent implements OnInit {
 
     deleteAccount(id: string) {
         const account = this.accounts.find(x => x.id === id);
-        account['isDeleting'] = true;
+        account.isDeleting = true;
         this.accountService.delete(id)
             .pipe(first())
             .subscribe(() => {
